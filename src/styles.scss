@@ -1,1 +1,181 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #2a7f62;
+$primary-dark: #1f5f49;
+$danger: #c0392b;
+$warning: #e69b00;
+$text: #2d3436;
+$muted: #7f8c8d;
+$border: #dfe6e9;
+$bg: #f5f7f8;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: $text;
+  background: $bg;
+}
+
+a {
+  color: $primary;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid $primary;
+  border-radius: 4px;
+  background: $primary;
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background: $primary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  &.btn-secondary {
+    background: #fff;
+    color: $primary;
+  }
+
+  &.btn-danger {
+    border-color: $danger;
+    background: #fff;
+    color: $danger;
+  }
+
+  &.btn-sm {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.form-field {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid $border;
+    border-radius: 4px;
+    font: inherit;
+
+    &.ng-invalid.ng-touched {
+      border-color: $danger;
+    }
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+
+  > .form-field {
+    flex: 1;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.field-error,
+.form-error {
+  color: $danger;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.muted {
+  color: $muted;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: $muted;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 2rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #fff;
+  background: $muted;
+
+  &.sev-low {
+    background: $primary;
+  }
+
+  &.sev-mid {
+    background: $warning;
+  }
+
+  &.sev-high {
+    background: $danger;
+  }
+}
+
+.app-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: $muted;
+  padding: 2rem 1rem;
+}
