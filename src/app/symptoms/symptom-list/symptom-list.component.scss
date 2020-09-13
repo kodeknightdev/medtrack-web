@@ -1,0 +1,23 @@
+.symptom {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+
+  .body {
+    flex: 1;
+  }
+
+  .when {
+    font-size: 0.85rem;
+  }
+
+  .notes {
+    margin: 0.4rem 0 0;
+    white-space: pre-line;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.4rem;
+  }
+}
