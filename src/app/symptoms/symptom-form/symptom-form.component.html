@@ -1,0 +1,30 @@
+<h1>Log a symptom</h1>
+
+<form [formGroup]="form" (ngSubmit)="save()" class="card" novalidate>
+  <div class="form-field">
+    <label for="name">What</label>
+    <input id="name" formControlName="name" placeholder="e.g. Headache">
+  </div>
+
+  <div class="form-field">
+    <label for="severity">Severity</label>
+    <input id="severity" type="range" min="1" max="10" formControlName="severity"><span class="severity-value">{{ form.value.severity }}/10</span>
+  </div>
+
+  <div class="form-field">
+    <label for="occurredAt">When</label>
+    <input id="occurredAt" type="datetime-local" formControlName="occurredAt">
+  </div>
+
+  <div class="form-field">
+    <label for="notes">Notes</label>
+    <textarea id="notes" formControlName="notes"></textarea>
+  </div>
+
+  <div class="form-error" *ngIf="error">{{ error }}</div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn" [disabled]="saving">Save</button>
+    <a routerLink="/symptoms" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
