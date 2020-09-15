@@ -1,4 +1,4 @@
-<h1>Log a symptom</h1>
+<h1>{{ editingId ? 'Edit symptom' : 'Log a symptom' }}</h1>
 
 <form [formGroup]="form" (ngSubmit)="save()" class="card" novalidate>
   <div class="form-field">

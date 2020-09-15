@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { SymptomService } from '../../core/services/symptom.service';
 import { fromLocalInput, toLocalInput } from '../../core/utils/date-utils';
@@ -10,7 +11,7 @@ import { fromLocalInput, toLocalInput } from '../../core/utils/date-utils';
   templateUrl: './symptom-form.component.html',
   styleUrls: ['./symptom-form.component.scss']
 })
-export class SymptomFormComponent {
+export class SymptomFormComponent implements OnInit {
   form = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(100)]],
     severity: [5, [Validators.required, Validators.min(1), Validators.max(10)]],
@@ -19,12 +20,29 @@ export class SymptomFormComponent {
   });
   saving = false;
   error = '';
+  editingId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private router: Router,
     private symptomService: SymptomService
   ) { }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.editingId = +id;
+      this.symptomService.get(this.editingId).subscribe(s => {
+        this.form.patchValue({
+          name: s.name,
+          severity: s.severity,
+          occurredAt: toLocalInput(s.occurredAt),
+          notes: s.notes || ''
+        });
+      });
+    }
+  }
 
   save(): void {
     if (this.form.invalid) {
@@ -37,7 +55,11 @@ export class SymptomFormComponent {
     this.saving = true;
     this.error = '';
 
-    this.symptomService.create(payload).subscribe({
+    const request: Observable<unknown> = this.editingId
+      ? this.symptomService.update(this.editingId, payload)
+      : this.symptomService.create(payload);
+
+    request.subscribe({
       next: () => this.router.navigate(['/symptoms']),
       error: () => {
         this.saving = false;

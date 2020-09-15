@@ -21,4 +21,13 @@ export class SymptomListComponent implements OnInit {
       .pipe(finalize(() => this.loading = false))
       .subscribe(symptoms => this.symptoms = symptoms);
   }
+
+  delete(symptom: Symptom): void {
+    if (!confirm(`Delete "${symptom.name}"?`)) {
+      return;
+    }
+    this.symptomService.delete(symptom.id).subscribe(() => {
+      this.symptoms = this.symptoms.filter(s => s.id !== symptom.id);
+    });
+  }
 }

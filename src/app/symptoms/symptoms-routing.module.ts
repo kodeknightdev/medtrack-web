@@ -6,7 +6,8 @@ import { SymptomFormComponent } from './symptom-form/symptom-form.component';
 
 const routes: Routes = [
   { path: '', component: SymptomListComponent },
-  { path: 'new', component: SymptomFormComponent }
+  { path: 'new', component: SymptomFormComponent },
+  { path: ':id/edit', component: SymptomFormComponent }
 ];
 
 @NgModule({

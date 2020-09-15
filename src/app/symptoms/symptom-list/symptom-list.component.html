@@ -12,4 +12,8 @@
     <div class="when muted">{{ s.occurredAt | date:'EEE d MMM y, HH:mm' }}</div>
     <p class="notes" *ngIf="s.notes">{{ s.notes }}</p>
   </div>
+    <div class="actions">
+      <a [routerLink]="[s.id, 'edit']" class="btn btn-secondary btn-sm">Edit</a>
+      <button type="button" class="btn btn-danger btn-sm" (click)="delete(s)">Delete</button>
+    </div>
 </div>
