@@ -4,10 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MedicationsRoutingModule } from './medications-routing.module';
 import { MedicationListComponent } from './medication-list/medication-list.component';
+import { MedicationFormComponent } from './medication-form/medication-form.component';
 
 @NgModule({
   declarations: [
-    MedicationListComponent
+    MedicationListComponent,
+    MedicationFormComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,51 @@
+<h1>{{ editingId ? 'Edit medication' : 'Add medication' }}</h1>
+
+<form [formGroup]="form" (ngSubmit)="save()" class="card" novalidate>
+  <div class="form-field">
+    <label for="name">Name</label>
+    <input id="name" formControlName="name">
+    <div class="field-error" *ngIf="form.get('name').touched && form.get('name').errors?.required">Name is required.</div>
+    <div class="field-error" *ngIf="form.get('name').touched && form.get('name').errors?.maxlength">Keep it under 100 characters.</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-field">
+      <label for="dosage">Dosage</label>
+      <input id="dosage" formControlName="dosage" placeholder="e.g. 200mg">
+      <div class="field-error" *ngIf="form.get('dosage').touched && form.get('dosage').errors?.maxlength">Keep it under 50 characters.</div>
+    </div>
+    <div class="form-field">
+      <label for="reminderTime">Daily reminder</label>
+      <input id="reminderTime" type="time" formControlName="reminderTime">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-field">
+      <label for="startDate">Start date</label>
+      <input id="startDate" type="date" formControlName="startDate">
+      <div class="field-error" *ngIf="form.get('startDate').touched && form.get('startDate').errors?.required">Start date is required.</div>
+    </div>
+    <div class="form-field">
+      <label for="endDate">End date</label>
+      <input id="endDate" type="date" formControlName="endDate">
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="instructions">Instructions</label>
+    <textarea id="instructions" formControlName="instructions"></textarea>
+    <div class="field-error" *ngIf="form.get('instructions').touched && form.get('instructions').errors?.maxlength">Keep it under 500 characters.</div>
+  </div>
+
+  <div class="form-field">
+    <label class="checkbox"><input type="checkbox" formControlName="active"> Currently taking</label>
+  </div>
+
+  <div class="form-error" *ngIf="error">{{ error }}</div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn" [disabled]="saving">Save</button>
+    <a routerLink="/medications" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>

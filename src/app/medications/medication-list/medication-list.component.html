@@ -1,5 +1,6 @@
 <div class="page-header">
   <h1>Medications</h1>
+  <a routerLink="new" class="btn">Add medication</a>
 </div>
 
 <p class="muted" *ngIf="loading">Loading&hellip;</p>
@@ -15,6 +16,7 @@
     <p *ngIf="m.instructions">{{ m.instructions }}</p>
   </div>
   <div class="actions">
+    <a [routerLink]="[m.id, 'edit']" class="btn btn-secondary btn-sm">Edit</a>
     <button type="button" class="btn btn-danger btn-sm" (click)="delete(m)">Remove</button>
   </div>
 </div>
