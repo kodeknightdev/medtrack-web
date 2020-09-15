@@ -6,7 +6,7 @@
 <p class="muted" *ngIf="loading">Loading&hellip;</p>
 
 <div class="card symptom" *ngFor="let s of symptoms">
-  <span class="badge">{{ s.severity }}</span>
+  <span class="badge" [ngClass]="severityClass(s.severity)">{{ s.severity }}</span>
   <div class="body">
     <strong>{{ s.name }}</strong>
     <div class="when muted">{{ s.occurredAt | date:'EEE d MMM y, HH:mm' }}</div>

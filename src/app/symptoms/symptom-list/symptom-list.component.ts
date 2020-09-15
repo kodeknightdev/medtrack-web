@@ -30,4 +30,11 @@ export class SymptomListComponent implements OnInit {
       this.symptoms = this.symptoms.filter(s => s.id !== symptom.id);
     });
   }
+
+  severityClass(severity: number): string {
+    if (severity >= 7) {
+      return 'sev-high';
+    }
+    return severity >= 4 ? 'sev-mid' : 'sev-low';
+  }
 }
