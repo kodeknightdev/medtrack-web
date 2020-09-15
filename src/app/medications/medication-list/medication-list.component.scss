@@ -1,0 +1,22 @@
+.medication {
+  display: flex;
+  gap: 1rem;
+
+  .body {
+    flex: 1;
+  }
+
+  .small {
+    font-size: 0.85rem;
+  }
+
+  &.inactive {
+    opacity: 0.6;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.4rem;
+    align-items: flex-start;
+  }
+}

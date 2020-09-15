@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1>Medications</h1>
+</div>
+
+<p class="muted" *ngIf="loading">Loading&hellip;</p>
+
+<div class="card medication" *ngFor="let m of medications" [class.inactive]="!m.active">
+  <div class="body">
+    <strong>{{ m.name }}</strong> <span class="muted" *ngIf="m.dosage">&middot; {{ m.dosage }}</span>
+    <div class="muted small">
+      Since {{ m.startDate | date:'d MMM y' }}
+      <ng-container *ngIf="m.endDate"> until {{ m.endDate | date:'d MMM y' }}</ng-container>
+      <ng-container *ngIf="m.reminderTime"> &middot; reminder at {{ m.reminderTime }}</ng-container>
+    </div>
+    <p *ngIf="m.instructions">{{ m.instructions }}</p>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn btn-danger btn-sm" (click)="delete(m)">Remove</button>
+  </div>
+</div>
