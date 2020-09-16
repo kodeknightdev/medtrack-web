@@ -3,6 +3,8 @@
   <a routerLink="new" class="btn">Add medication</a>
 </div>
 
+<app-due-reminders></app-due-reminders>
+
 <p class="muted" *ngIf="loading">Loading&hellip;</p>
 
 <div class="card medication" *ngFor="let m of medications" [class.inactive]="!m.active">

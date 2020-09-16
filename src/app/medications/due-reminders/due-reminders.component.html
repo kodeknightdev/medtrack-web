@@ -1,0 +1,9 @@
+<div class="due" *ngIf="due.length">
+  <strong>Due now</strong>
+  <ul>
+    <li *ngFor="let m of due">
+      <span>{{ m.name }} <span class="muted" *ngIf="m.dosage">({{ m.dosage }})</span> &middot; {{ m.reminderTime }}</span>
+      <button type="button" class="btn btn-sm" (click)="markTaken(m)">Taken</button>
+    </li>
+  </ul>
+</div>
