@@ -54,7 +54,8 @@ export class MedicationFormComponent implements OnInit {
     }
 
     const value = this.form.value;
-    const reminderTime = value.reminderTime || null;
+    // some browsers include seconds (HH:mm:ss) when the input has a step, the api wants HH:mm
+    const reminderTime = value.reminderTime ? value.reminderTime.substring(0, 5) : null;
     const payload = {
       ...value,
       endDate: value.endDate || null,
