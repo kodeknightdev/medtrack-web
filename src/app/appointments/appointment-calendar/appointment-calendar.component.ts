@@ -21,6 +21,7 @@ export class AppointmentCalendarComponent implements OnInit {
   current = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
   weeks: CalendarDay[][] = [];
   appointments: Appointment[] = [];
+  upcoming: Appointment[] = [];
 
   constructor(private appointmentService: AppointmentService) { }
 
@@ -29,6 +30,7 @@ export class AppointmentCalendarComponent implements OnInit {
       this.appointments = list;
       this.build();
     });
+    this.appointmentService.upcoming().subscribe(list => this.upcoming = list);
     this.build();
   }
 

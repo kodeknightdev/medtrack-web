@@ -19,3 +19,13 @@
     </div>
   </ng-container>
 </div>
+
+<section class="card upcoming">
+  <h3>Next two weeks</h3>
+  <ul>
+    <li *ngFor="let a of upcoming">
+      <strong>{{ a.startsAt | date:'EEE d MMM, HH:mm' }}</strong> &middot; {{ a.title }}
+      <span class="muted" *ngIf="a.provider">with {{ a.provider }}</span>
+    </li>
+  </ul>
+</section>
