@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './layout/nav/nav.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NavComponent } from './layout/nav/nav.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AuthModule,
     AppRoutingModule
   ],
   providers: [],
