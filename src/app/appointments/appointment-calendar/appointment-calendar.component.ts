@@ -32,6 +32,22 @@ export class AppointmentCalendarComponent implements OnInit {
     this.build();
   }
 
+  previousMonth(): void {
+    this.current = new Date(this.current.getFullYear(), this.current.getMonth() - 1, 1);
+    this.build();
+  }
+
+  nextMonth(): void {
+    this.current = new Date(this.current.getFullYear(), this.current.getMonth() + 1, 1);
+    this.build();
+  }
+
+  today(): void {
+    const now = new Date();
+    this.current = new Date(now.getFullYear(), now.getMonth(), 1);
+    this.build();
+  }
+
   private build(): void {
     const byDay = new Map<string, Appointment[]>();
     for (const a of this.appointments) {

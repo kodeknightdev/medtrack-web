@@ -3,7 +3,12 @@
   <a routerLink="new" class="btn">New appointment</a>
 </div>
 
-<h2>{{ current | date:'MMMM y' }}</h2>
+<div class="month-nav">
+  <button type="button" class="btn btn-secondary btn-sm" (click)="previousMonth()">&lsaquo;</button>
+  <h2>{{ current | date:'MMMM y' }}</h2>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="nextMonth()">&rsaquo;</button>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="today()">Today</button>
+</div>
 
 <div class="calendar card">
   <div class="weekday" *ngFor="let d of weekdays">{{ d }}</div>
