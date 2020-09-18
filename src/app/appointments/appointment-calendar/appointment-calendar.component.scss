@@ -1,0 +1,88 @@
+.month-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+
+  h2 {
+    margin: 0 0.5rem;
+    min-width: 10rem;
+    text-align: center;
+  }
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0;
+  overflow: hidden;
+}
+
+.weekday {
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  background: #eef2f3;
+}
+
+.day {
+  min-height: 90px;
+  padding: 0.3rem;
+  border-top: 1px solid #dfe6e9;
+  border-left: 1px solid #dfe6e9;
+  font-size: 0.8rem;
+
+  &:nth-child(7n + 1) {
+    border-left: none;
+  }
+
+  &.other-month {
+    background: #fafbfb;
+    color: #b2bec3;
+  }
+
+  &.today .date {
+    background: #2a7f62;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0 0.35rem;
+  }
+}
+
+.date {
+  display: inline-block;
+  margin-bottom: 0.2rem;
+}
+
+.appt {
+  display: block;
+  margin-bottom: 2px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: #d8efe6;
+  color: #1f5f49;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upcoming ul {
+  margin: 0;
+  padding-left: 1.1rem;
+
+  li {
+    margin-bottom: 0.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .day {
+    min-height: 60px;
+  }
+
+  .appt {
+    font-size: 0.7rem;
+  }
+}
