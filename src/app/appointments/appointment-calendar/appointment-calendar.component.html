@@ -1,5 +1,6 @@
 <div class="page-header">
   <h1>Appointments</h1>
+  <a routerLink="new" class="btn">New appointment</a>
 </div>
 
 <h2>{{ current | date:'MMMM y' }}</h2>
@@ -9,7 +10,7 @@
   <ng-container *ngFor="let week of weeks">
     <div class="day" *ngFor="let day of week" [class.other-month]="!day.inMonth" [class.today]="day.isToday">
       <span class="date">{{ day.date.getDate() }}</span>
-      <span class="appt" *ngFor="let a of day.appointments">{{ a.startsAt | date:'HH:mm' }} {{ a.title }}</span>
+      <a class="appt" *ngFor="let a of day.appointments" [routerLink]="[a.id, 'edit']">{{ a.startsAt | date:'HH:mm' }} {{ a.title }}</a>
     </div>
   </ng-container>
 </div>
