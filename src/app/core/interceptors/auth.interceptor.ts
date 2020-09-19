@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../services/auth.service';
@@ -11,9 +12,20 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.auth.token;
-    if (token && request.url.startsWith(environment.apiUrl)) {
+    const isApi = request.url.startsWith(environment.apiUrl);
+
+    if (token && isApi) {
       request = request.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
     }
-    return next.handle(request);
+
+    return next.handle(request).pipe(
+      catchError((err: HttpErrorResponse) => {
+        // expired/invalid token - but don't bounce a failed login attempt
+        if (err.status === 401 && isApi && !request.url.includes('/auth/')) {
+          this.auth.logout();
+        }
+        return throwError(err);
+      })
+    );
   }
 }
