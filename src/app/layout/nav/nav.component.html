@@ -5,4 +5,11 @@
     <a routerLink="/medications" routerLinkActive="active">Medications</a>
     <a routerLink="/appointments" routerLinkActive="active">Appointments</a>
   </div>
+  <div class="user" *ngIf="user$ | async as email; else signIn">
+    <span class="email">{{ email }}</span>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="logout()">Log out</button>
+  </div>
+  <ng-template #signIn>
+    <a routerLink="/login" class="btn btn-sm">Log in</a>
+  </ng-template>
 </nav>
