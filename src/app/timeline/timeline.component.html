@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h1>Timeline</h1>
+</div>
+
+<p class="muted" *ngIf="loading">Loading&hellip;</p>
+
+<section class="day" *ngFor="let d of days">
+  <h3>{{ d.day | date:'EEEE d MMMM y' }}</h3>
+  <a class="item card" *ngFor="let item of d.items" [routerLink]="linkFor(item)" [ngClass]="item.type">
+    <span class="time muted">{{ item.date | date:'HH:mm' }}</span>
+    <span class="type">{{ item.type }}</span>
+    <span class="title">{{ item.title }}</span>
+    <span class="detail muted" *ngIf="item.detail">{{ item.detail }}</span>
+  </a>
+</section>

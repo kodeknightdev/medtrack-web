@@ -1,0 +1,56 @@
+.day {
+  margin-bottom: 1.5rem;
+
+  h3 {
+    font-size: 0.95rem;
+    color: #636e72;
+    border-bottom: 1px solid #dfe6e9;
+    padding-bottom: 0.3rem;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  border-left: 4px solid #b2bec3;
+
+  &.symptom {
+    border-left-color: #e69b00;
+  }
+
+  &.appointment {
+    border-left-color: #0984e3;
+  }
+
+  &.medication {
+    border-left-color: #2a7f62;
+  }
+
+  &:hover {
+    background: #fbfcfc;
+  }
+}
+
+.time {
+  width: 3rem;
+  font-size: 0.85rem;
+}
+
+.type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  width: 6.5rem;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.detail {
+  margin-left: auto;
+  font-size: 0.85rem;
+}

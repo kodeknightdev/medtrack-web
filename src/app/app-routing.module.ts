@@ -19,6 +19,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./appointments/appointments.module').then(m => m.AppointmentsModule)
   },
+  {
+    path: 'timeline',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./timeline/timeline.module').then(m => m.TimelineModule)
+  },
   { path: '**', redirectTo: 'symptoms' }
 ];
 
