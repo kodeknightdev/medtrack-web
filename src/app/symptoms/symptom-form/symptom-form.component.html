@@ -4,27 +4,25 @@
   <div class="form-field">
     <label for="name">What</label>
     <input id="name" formControlName="name" placeholder="e.g. Headache">
-    <div class="field-error" *ngIf="form.get('name').touched && form.get('name').errors?.required">What is required.</div>
-    <div class="field-error" *ngIf="form.get('name').touched && form.get('name').errors?.maxlength">Keep it under 100 characters.</div>
+    <app-field-error [control]="form.get('name')" label="What"></app-field-error>
   </div>
 
   <div class="form-field">
     <label for="severity">Severity</label>
     <input id="severity" type="range" min="1" max="10" formControlName="severity"><span class="severity-value">{{ form.value.severity }}/10</span>
-    <div class="field-error" *ngIf="form.get('severity').touched && form.get('severity').errors?.min">Severity must be between 1 and 10.</div>
-    <div class="field-error" *ngIf="form.get('severity').touched && form.get('severity').errors?.max">Severity must be between 1 and 10.</div>
+    <app-field-error [control]="form.get('severity')" label="Severity"></app-field-error>
   </div>
 
   <div class="form-field">
     <label for="occurredAt">When</label>
     <input id="occurredAt" type="datetime-local" formControlName="occurredAt">
-    <div class="field-error" *ngIf="form.get('occurredAt').touched && form.get('occurredAt').errors?.required">When is required.</div>
+    <app-field-error [control]="form.get('occurredAt')" label="When"></app-field-error>
   </div>
 
   <div class="form-field">
     <label for="notes">Notes</label>
     <textarea id="notes" formControlName="notes"></textarea>
-    <div class="field-error" *ngIf="form.get('notes').touched && form.get('notes').errors?.maxlength">Notes must be under 1000 characters.</div>
+    <app-field-error [control]="form.get('notes')" label="Notes"></app-field-error>
   </div>
 
   <div class="form-error" *ngIf="error">{{ error }}</div>

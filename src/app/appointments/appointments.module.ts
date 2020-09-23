@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { AppointmentsRoutingModule } from './appointments-routing.module';
 import { AppointmentCalendarComponent } from './appointment-calendar/appointment-calendar.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
@@ -12,8 +11,7 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
     AppointmentFormComponent
   ],
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
+    SharedModule,
     AppointmentsRoutingModule
   ]
 })

@@ -4,20 +4,19 @@
   <div class="form-field">
     <label for="title">Title</label>
     <input id="title" formControlName="title" placeholder="e.g. GP check-up">
-    <div class="field-error" *ngIf="form.get('title').touched && form.get('title').errors?.required">Title is required.</div>
-    <div class="field-error" *ngIf="form.get('title').touched && form.get('title').errors?.maxlength">Keep it under 150 characters.</div>
+    <app-field-error [control]="form.get('title')" label="Title"></app-field-error>
   </div>
 
   <div class="form-row">
     <div class="form-field">
       <label for="provider">With</label>
       <input id="provider" formControlName="provider">
-      <div class="field-error" *ngIf="form.get('provider').touched && form.get('provider').errors?.maxlength">Keep it under 100 characters.</div>
+      <app-field-error [control]="form.get('provider')" label="With"></app-field-error>
     </div>
     <div class="form-field">
       <label for="location">Where</label>
       <input id="location" formControlName="location">
-      <div class="field-error" *ngIf="form.get('location').touched && form.get('location').errors?.maxlength">Keep it under 200 characters.</div>
+      <app-field-error [control]="form.get('location')" label="Where"></app-field-error>
     </div>
   </div>
 
@@ -25,12 +24,12 @@
     <div class="form-field">
       <label for="startsAt">Starts</label>
       <input id="startsAt" type="datetime-local" formControlName="startsAt" (change)="onStartChange()">
-      <div class="field-error" *ngIf="form.get('startsAt').touched && form.get('startsAt').errors?.required">Start time is required.</div>
+      <app-field-error [control]="form.get('startsAt')" label="Starts"></app-field-error>
     </div>
     <div class="form-field">
       <label for="endsAt">Ends</label>
       <input id="endsAt" type="datetime-local" formControlName="endsAt">
-      <div class="field-error" *ngIf="form.get('endsAt').touched && form.get('endsAt').errors?.required">End time is required.</div>
+      <app-field-error [control]="form.get('endsAt')" label="Ends"></app-field-error>
     </div>
   </div>
   <div class="form-error" *ngIf="form.errors?.dateRange && form.get('endsAt').touched">
@@ -40,7 +39,7 @@
   <div class="form-field">
     <label for="notes">Notes</label>
     <textarea id="notes" formControlName="notes"></textarea>
-    <div class="field-error" *ngIf="form.get('notes').touched && form.get('notes').errors?.maxlength">Notes must be under 1000 characters.</div>
+    <app-field-error [control]="form.get('notes')" label="Notes"></app-field-error>
   </div>
 
   <div class="form-error" *ngIf="error">{{ error }}</div>

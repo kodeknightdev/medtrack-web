@@ -5,15 +5,13 @@
     <div class="form-field">
       <label for="email">Email</label>
       <input id="email" type="email" formControlName="email" autocomplete="username">
-      <div class="field-error" *ngIf="form.get('email').touched && form.get('email').errors?.required">Email is required.</div>
-      <div class="field-error" *ngIf="form.get('email').touched && form.get('email').errors?.email">Enter a valid email address.</div>
+      <app-field-error [control]="form.get('email')" label="Email"></app-field-error>
     </div>
 
     <div class="form-field">
       <label for="password">Password</label>
       <input id="password" type="password" formControlName="password" autocomplete="new-password">
-      <div class="field-error" *ngIf="form.get('password').touched && form.get('password').errors?.required">Password is required.</div>
-      <div class="field-error" *ngIf="form.get('password').touched && form.get('password').errors?.minlength">Use at least 8 characters.</div>
+      <app-field-error [control]="form.get('password')" label="Password"></app-field-error>
     </div>
 
     <div class="form-error" *ngIf="error">{{ error }}</div>

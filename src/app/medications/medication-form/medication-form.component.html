@@ -4,19 +4,19 @@
   <div class="form-field">
     <label for="name">Name</label>
     <input id="name" formControlName="name">
-    <div class="field-error" *ngIf="form.get('name').touched && form.get('name').errors?.required">Name is required.</div>
-    <div class="field-error" *ngIf="form.get('name').touched && form.get('name').errors?.maxlength">Keep it under 100 characters.</div>
+    <app-field-error [control]="form.get('name')" label="Name"></app-field-error>
   </div>
 
   <div class="form-row">
     <div class="form-field">
       <label for="dosage">Dosage</label>
       <input id="dosage" formControlName="dosage" placeholder="e.g. 200mg">
-      <div class="field-error" *ngIf="form.get('dosage').touched && form.get('dosage').errors?.maxlength">Keep it under 50 characters.</div>
+      <app-field-error [control]="form.get('dosage')" label="Dosage"></app-field-error>
     </div>
     <div class="form-field">
       <label for="reminderTime">Daily reminder</label>
       <input id="reminderTime" type="time" formControlName="reminderTime">
+      <app-field-error [control]="form.get('reminderTime')" label="Daily reminder"></app-field-error>
     </div>
   </div>
 
@@ -24,18 +24,19 @@
     <div class="form-field">
       <label for="startDate">Start date</label>
       <input id="startDate" type="date" formControlName="startDate">
-      <div class="field-error" *ngIf="form.get('startDate').touched && form.get('startDate').errors?.required">Start date is required.</div>
+      <app-field-error [control]="form.get('startDate')" label="Start date"></app-field-error>
     </div>
     <div class="form-field">
       <label for="endDate">End date</label>
       <input id="endDate" type="date" formControlName="endDate">
+      <app-field-error [control]="form.get('endDate')" label="End date"></app-field-error>
     </div>
   </div>
 
   <div class="form-field">
     <label for="instructions">Instructions</label>
     <textarea id="instructions" formControlName="instructions"></textarea>
-    <div class="field-error" *ngIf="form.get('instructions').touched && form.get('instructions').errors?.maxlength">Keep it under 500 characters.</div>
+    <app-field-error [control]="form.get('instructions')" label="Instructions"></app-field-error>
   </div>
 
   <div class="form-field">
