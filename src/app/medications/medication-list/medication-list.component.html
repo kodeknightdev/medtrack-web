@@ -7,6 +7,10 @@
 
 <p class="muted" *ngIf="loading">Loading&hellip;</p>
 
+<div class="empty-state" *ngIf="!loading && medications.length === 0">
+  No medications yet. <a routerLink="new">Add one</a> to get daily reminders.
+</div>
+
 <div class="card medication" *ngFor="let m of medications" [class.inactive]="!m.active">
   <div class="body">
     <strong>{{ m.name }}</strong> <span class="muted" *ngIf="m.dosage">&middot; {{ m.dosage }}</span>

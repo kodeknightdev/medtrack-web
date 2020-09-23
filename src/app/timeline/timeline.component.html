@@ -4,6 +4,11 @@
 
 <p class="muted" *ngIf="loading">Loading&hellip;</p>
 
+<div class="empty-state" *ngIf="!loading && days.length === 0">
+  Your timeline is empty. Start by logging a <a routerLink="/symptoms/new">symptom</a>,
+  adding a <a routerLink="/medications/new">medication</a> or an <a routerLink="/appointments/new">appointment</a>.
+</div>
+
 <section class="day" *ngFor="let d of days">
   <h3>{{ d.day | date:'EEEE d MMMM y' }}</h3>
   <a class="item card" *ngFor="let item of d.items" [routerLink]="linkFor(item)" [ngClass]="item.type">

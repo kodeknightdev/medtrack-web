@@ -5,6 +5,10 @@
 
 <p class="muted" *ngIf="loading">Loading&hellip;</p>
 
+<div class="empty-state" *ngIf="!loading && symptoms.length === 0">
+  Nothing logged yet. When something comes up, <a routerLink="new">log it here</a>.
+</div>
+
 <div class="card symptom" *ngFor="let s of symptoms">
   <span class="badge" [ngClass]="severityClass(s.severity)">{{ s.severity }}</span>
   <div class="body">

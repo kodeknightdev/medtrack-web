@@ -27,5 +27,6 @@
       <strong>{{ a.startsAt | date:'EEE d MMM, HH:mm' }}</strong> &middot; {{ a.title }}
       <span class="muted" *ngIf="a.provider">with {{ a.provider }}</span>
     </li>
+    <li class="muted" *ngIf="upcoming.length === 0">Nothing in the next two weeks.</li>
   </ul>
 </section>
