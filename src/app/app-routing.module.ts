@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'symptoms', pathMatch: 'full' },
+  { path: '', redirectTo: 'timeline', pathMatch: 'full' },
   {
     path: 'symptoms',
     canActivate: [AuthGuard],
@@ -24,7 +24,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./timeline/timeline.module').then(m => m.TimelineModule)
   },
-  { path: '**', redirectTo: 'symptoms' }
+  { path: '**', redirectTo: 'timeline' }
 ];
 
 @NgModule({
