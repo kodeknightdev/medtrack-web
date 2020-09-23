@@ -58,7 +58,8 @@ export class AppointmentCalendarComponent implements OnInit {
     }
 
     const first = this.current;
-    const offset = first.getDay();
+    // grid starts on Monday, getDay() is 0 for Sunday
+    const offset = (first.getDay() + 6) % 7;
     const start = new Date(first.getFullYear(), first.getMonth(), 1 - offset);
     const todayKey = toDateKey(new Date());
 
