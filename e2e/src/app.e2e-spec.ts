@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display the brand in the nav', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('medtrack-web app is running!');
+    expect(page.getBrandText()).toEqual('MedTrack');
   });
 
   afterEach(async () => {
