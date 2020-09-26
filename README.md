@@ -1,27 +1,33 @@
-# MedtrackWeb
+# MedTrack Web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+Angular front end for MedTrack, a small personal health journal. Log symptoms,
+keep track of medications (with a daily reminder time) and appointments, and see
+everything on one timeline.
 
-## Development server
+Talks to the ASP.NET Core API in the `medtrack-api` repo.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Running locally
 
-## Code scaffolding
+Requires Node 12+ and the Angular CLI 10.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm install
+npm start
+```
 
-## Build
+Then open http://localhost:4200. The API is expected at `https://localhost:5001/api`
+(see `src/environments/environment.ts`). The API already allows CORS from
+`localhost:4200` in Development.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Structure
 
-## Running unit tests
+- `core/` - models, services, the auth guard and the http interceptor that adds the JWT
+- `shared/` - shared module and the `app-field-error` component used by all forms
+- `auth/` - login and register pages
+- `symptoms/`, `medications/`, `appointments/`, `timeline/` - lazy loaded feature modules
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Tests
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+npm test
+```
