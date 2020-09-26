@@ -39,3 +39,39 @@
   gap: 0.75rem;
   font-size: 0.9rem;
 }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+
+    &.open {
+      display: flex;
+    }
+  }
+
+  .user .email {
+    display: none;
+  }
+}

@@ -10,11 +10,18 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class NavComponent {
   readonly user$: Observable<string | null>;
+  menuOpen = false;
+
   constructor(private auth: AuthService) {
     this.user$ = auth.user$;
   }
 
   logout(): void {
+    this.menuOpen = false;
     this.auth.logout();
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
   }
 }

@@ -1,10 +1,11 @@
 <nav class="nav">
   <a routerLink="/" class="brand">MedTrack</a>
-  <div class="links">
-    <a routerLink="/timeline" routerLinkActive="active">Timeline</a>
-    <a routerLink="/symptoms" routerLinkActive="active">Symptoms</a>
-    <a routerLink="/medications" routerLinkActive="active">Medications</a>
-    <a routerLink="/appointments" routerLinkActive="active">Appointments</a>
+  <button type="button" class="menu-toggle" (click)="menuOpen = !menuOpen" aria-label="Toggle menu">&#9776;</button>
+  <div class="links" [class.open]="menuOpen">
+    <a routerLink="/timeline" routerLinkActive="active" (click)="closeMenu()">Timeline</a>
+    <a routerLink="/symptoms" routerLinkActive="active" (click)="closeMenu()">Symptoms</a>
+    <a routerLink="/medications" routerLinkActive="active" (click)="closeMenu()">Medications</a>
+    <a routerLink="/appointments" routerLinkActive="active" (click)="closeMenu()">Appointments</a>
   </div>
   <div class="user" *ngIf="user$ | async as email; else signIn">
     <span class="email">{{ email }}</span>
