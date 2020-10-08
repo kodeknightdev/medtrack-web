@@ -6,7 +6,7 @@
 <p class="muted" *ngIf="loading">Loading&hellip;</p>
 
 <div class="empty-state" *ngIf="!loading && symptoms.length === 0">
-  Nothing logged yet. When something comes up, <a routerLink="new">log it here</a>.
+  Nothing logged yet. When something comes up, <a routerLink="new">log it</a>.
 </div>
 
 <div class="card symptom" *ngFor="let s of symptoms">
